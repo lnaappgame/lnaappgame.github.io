@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Brain Gym — Legal</title>
+<meta name="description" content="Privacy Policy and Terms of Use of Daily Brain Gym (Méninges du Jour), a daily logic and memory game by LNA App.">
+<link rel="alternate" hreflang="fr" href="https://lnaappgame.github.io/meninges/">
+<link rel="alternate" hreflang="en" href="https://lnaappgame.github.io/meninges/en/">
+<style>
+  /* Polices du système : la page ne charge rien depuis un serveur tiers. */
+  :root{
+    --paper: #F4F3FB;
+    --paper-deep: #E9E7F6;
+    --ink: #17134A;
+    --ink-soft: #5A587C;
+    --gold: #6A3CF0;
+    --gold-bright: #4E28C2;
+    --rule: #D8D5EE;
+    --card: #FFFFFF;
+    --shadow: rgba(23,19,74,0.10);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper: #0E0C2B;
+      --paper-deep: #17134A;
+      --ink: #F6F4FF;
+      --ink-soft: #BDB9E0;
+      --gold: #BFA0F6;
+      --gold-bright: #D6C4FF;
+      --rule: #2E2868;
+      --card: #1A1650;
+      --shadow: rgba(0,0,0,0.45);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper: #0E0C2B;
+    --paper-deep: #17134A;
+    --ink: #F6F4FF;
+    --ink-soft: #BDB9E0;
+    --gold: #BFA0F6;
+    --gold-bright: #D6C4FF;
+    --rule: #2E2868;
+    --card: #1A1650;
+    --shadow: rgba(0,0,0,0.45);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap{ max-width: 720px; margin: 0 auto; padding-inline: 16px; padding-block: 40px 64px; }
+
+  header.top{ text-align: center; margin-bottom: 28px; }
+  .wordmark{
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    font-size: clamp(1.6rem, 6vw, 2.3rem);
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .beams{
+    height: 4px; width: 200px; margin: 12px auto 0; border-radius: 2px;
+    background: linear-gradient(90deg, #4CD4A2 0 20%, #BFA0F6 20% 40%, #79BAF2 40% 60%, #F59DCB 60% 80%, #F1B26C 80% 100%);
+  }
+  .kicker{
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    margin-top: 12px;
+  }
+  .langswitch{ margin-top: 12px; font-size: 0.82rem; }
+  .langswitch a{ color: var(--ink-soft) }
+  .langswitch a:hover{ color: var(--gold-bright) }
+
+  nav.tabs{
+    display:flex; gap: 8px; justify-content:center;
+    margin: 28px 0 8px; border-bottom: 1px solid var(--rule);
+  }
+  nav.tabs button{
+    font: inherit; font-weight: 600; font-size: 0.95rem;
+    color: var(--ink-soft); background: none; border: none;
+    padding: 10px 6px 12px; cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  nav.tabs button:hover{ color: var(--ink) }
+  nav.tabs button[aria-selected="true"]{ color: var(--ink); border-bottom-color: var(--gold); }
+  nav.tabs button:focus-visible{ outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .doc{ display:none }
+  .doc.active{ display:block }
+
+  .masthead{
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px -12px var(--shadow);
+    padding: 22px 24px;
+    margin: 28px 0 36px;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+  .masthead strong{ color: var(--ink); font-weight: 700 }
+  .masthead .doctitle{ display:block; font-weight: 700; font-size: 1.15rem; color: var(--ink); margin-bottom: 10px; }
+  .masthead .updated{ display:block; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--rule); font-style: italic; }
+
+  h2{ font-weight: 700; font-size: 1.25rem; color: var(--ink); margin: 2.4em 0 0.7em; text-wrap: balance; scroll-margin-top: 16px; }
+  h3{ font-weight: 600; font-size: 1.02rem; color: var(--gold-bright); margin: 1.8em 0 0.5em; }
+  p, li{ max-width: 64ch; color: var(--ink); }
+  p{ margin: 0 0 1em; }
+  strong{ color: var(--ink); font-weight: 700 }
+  a{ color: var(--gold-bright); text-decoration-color: var(--rule); text-underline-offset: 2px; overflow-wrap: anywhere; }
+  a:hover{ text-decoration-color: var(--gold-bright); }
+  ul{ margin: 0 0 1.2em; padding-left: 1.3em; }
+  li{ margin-bottom: 0.5em; }
+
+  .toc{
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 24px 0 8px;
+    font-size: 0.88rem;
+  }
+  .toc summary{ cursor: pointer; font-weight: 600; color: var(--ink); }
+  .toc ol{ margin: 14px 0 0; padding-left: 1.2em; columns: 2; column-gap: 24px; }
+  .toc li{ margin-bottom: 0.35em; break-inside: avoid; color: var(--ink-soft) }
+  .toc a{ color: var(--ink-soft) }
+  .toc a:hover{ color: var(--gold-bright) }
+
+  footer.contact{ margin-top: 3em; padding-top: 1.6em; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--ink-soft); }
+  footer.contact .copybtn{
+    font: inherit; font-size: 0.78rem; font-weight: 600;
+    color: var(--gold-bright); background: none;
+    border: 1px solid var(--rule); border-radius: 4px;
+    padding: 4px 10px; margin-left: 8px; cursor: pointer;
+  }
+  footer.contact .copybtn:hover{ border-color: var(--gold-bright) }
+
+  @media (max-width: 480px){
+    .toc ol{ columns: 1; }
+    nav.tabs{ font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="wordmark">DAILY BRAIN GYM</div>
+    <div class="beams" aria-hidden="true"></div>
+    <div class="kicker">Legal — LNA App</div>
+    <div class="langswitch"><a href="../" hreflang="fr" lang="fr">Version française</a></div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Legal documents">
+    <button id="tab-conf" role="tab" aria-selected="true" aria-controls="doc-conf">Privacy Policy</button>
+    <button id="tab-cgu" role="tab" aria-selected="false" aria-controls="doc-cgu">Terms of Use</button>
+  </nav>
+
+  <!-- ─────────────── Privacy Policy ─────────────── -->
+  <article id="doc-conf" class="doc active" role="tabpanel" aria-labelledby="tab-conf">
+    <div class="masthead">
+      <span class="doctitle">Privacy Policy — Daily Brain Gym</span>
+      <strong>LNA App</strong> — Damien Ellena, sole trader (EI)<br>
+      12 montée du Château, 13650 Meyrargues, France<br>
+      Phone: +33 6 19 56 21 68 — Contact: lna.app.game@gmail.com<br>
+      SIRET (French business ID): 790 346 076 00025<br>
+      EU VAT number: FR 19790346076
+      <span class="updated">Last updated: November 10, 2026. The <a href="../" hreflang="fr">French version</a> is the authoritative one.</span>
+    </div>
+
+    <details class="toc">
+      <summary>Contents (11 sections)</summary>
+      <ol>
+        <li><a href="#c1">Publisher of the app</a></li>
+        <li><a href="#c2">What data is processed</a></li>
+        <li><a href="#c3">Legal basis and purposes</a></li>
+        <li><a href="#c4">Recipients of the data</a></li>
+        <li><a href="#c5">Transfers outside the EU</a></li>
+        <li><a href="#c6">Retention periods</a></li>
+        <li><a href="#c7">Your rights</a></li>
+        <li><a href="#c8">Children</a></li>
+        <li><a href="#c9">Security</a></li>
+        <li><a href="#c10">Changes to this policy</a></li>
+        <li><a href="#c11">Contact</a></li>
+      </ol>
+    </details>
+
+    <h2 id="c1">1. Publisher of the app</h2>
+    <p>The <strong>Daily Brain Gym</strong> mobile app (“Méninges du Jour” in French) is published by:</p>
+    <p><strong>LNA App</strong>, trade name of Damien Ellena, sole trader (EI)<br>
+    12 montée du Château, 13650 Meyrargues, France<br>
+    Phone: +33 6 19 56 21 68<br>
+    SIRET: 790 346 076 00025<br>
+    EU VAT number: FR 19790346076<br>
+    Contact: <a href="mailto:lna.app.game@gmail.com">lna.app.game@gmail.com</a></p>
+    <p><strong>Hosting.</strong> The online services used by the app (analytics, crash reports, remote settings, test feedback) are provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (phone +353 1 543 1000), through the Firebase service. The pages of this website are hosted by GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States (phone +1 877 448 4820).</p>
+
+    <h2 id="c2">2. What data is processed?</h2>
+
+    <h3>2.1 Game data, on your device only</h3>
+    <p>Daily Brain Gym does not ask for an account, a name, an email address or a nickname to play. Your progress (daily challenges completed, day streak and catch-up coffees, Stars, weekly goals, brain shape for each skill, difficulty level of each game, blitz records, grids in your gallery) is stored <strong>only on your device</strong> and is not sent to any server. If you uninstall the app or clear its data from your phone's settings, this data is deleted.</p>
+
+    <h3>2.2 Analytics, technical diagnostics and remote settings (Firebase Analytics, Crashlytics and Remote Config)</h3>
+    <p>The app uses <strong>Firebase Analytics</strong> to measure general use of the game (for example: a challenge started or completed, its duration, a hint used, a grid completed, a video watched), <strong>Firebase Crashlytics</strong> to receive an automatic technical report if the app crashes (type of error, technical state of the app at the time) and <strong>Firebase Remote Config</strong> to receive the game's settings (for example the number of Stars earned or the number of videos offered) without publishing a new version. These tools, provided by Google, use technical data about your device (model, operating system version, installation identifier) but are not intended to identify you personally.</p>
+    <p>If you are in the European Economic Area, the United Kingdom or Switzerland, analytics is <strong>turned off when the app starts</strong> and is only turned on if you accept, in the consent tool described in section 2.3, the purposes “store and/or access information on a device” (purpose 1) and “measure content performance” (purpose 8). Crash reports and remote settings, which the game needs to work properly, do not depend on this choice.</p>
+
+    <h3>2.3 Advertising (Google AdMob)</h3>
+    <p>The app shows ads provided by <strong>Google AdMob</strong>: mainly videos you freely choose to watch in exchange for a benefit (a hint, a second attempt at the daily challenge, doubled Stars) and, where applicable, ads between two free-play games (never during a game or during the daily challenge). To serve, measure and personalise these ads, Google may collect technical data about your device: advertising identifier (AAID on Android, IDFA on iOS — the latter only after your explicit permission through Apple's “App Tracking Transparency” prompt), approximate IP address, device information and interactions with ads.</p>
+    <p>LNA App neither receives nor stores this data itself: it is processed directly by Google, under its own privacy policy, available here: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+    <p>A consent tool (Google User Messaging Platform, compliant with the IAB Europe Transparency and Consent Framework) is shown to users in the European Economic Area, the United Kingdom or Switzerland before any ad request, in accordance with the GDPR. You can review your choices at any time from the app's home screen (“Privacy options”).</p>
+
+    <h3>2.4 In-app purchases (Google Play / App Store)</h3>
+    <p>The app may offer optional in-app purchases (see the Terms of Use). These purchases are handled entirely by <strong>Google Play</strong> or Apple's <strong>App Store</strong>: LNA App never sees or keeps your payment information (card number, etc.). Only the confirmation that a purchase was made is sent to the app, to unlock the corresponding content.</p>
+
+    <h3>2.5 What we do not do</h3>
+    <p>LNA App does not sell any data to third parties and does not use any analytics or ad-targeting tool other than those listed above (Google AdMob, Firebase). The app has no access to your contacts, your photos, your precise location or any other data on your device not mentioned in this policy.</p>
+    <p><strong>Worldwide ranking (coming later).</strong> A future version will let you see how you compare with other players in each skill. Today, no game result is sent to our servers. Before this ranking goes live, this policy will be completed to describe precisely the data published (anonymously), its purpose and its retention period.</p>
+
+    <h3>2.6 Test feedback (test version only)</h3>
+    <p>During the test phase, the version distributed to testers has a “Testers” tab that lets you, <strong>entirely voluntarily</strong>, send us your opinion or report a bug. A submission contains: your answers to the questionnaire and the texts you write, the first name or nickname you choose to give (optional), your device model, the system and app versions, the language, the number of days since installation and of sessions, your progress in the game (for example “12 daily challenges”) and a randomly generated installation identifier, which links your submissions together without identifying you. This feedback is used only to <strong>improve the game</strong>. It is received by LNA App through Google Firebase (Cloud Firestore), as a processor, and <strong>automatically deleted after 12 months</strong>. Please avoid writing personal details (address, phone number) in the text boxes. This tab does not exist in the public version.</p>
+
+    <h2 id="c3">3. Legal basis and purposes</h2>
+    <ul>
+      <li>Running the game and saving it on your device (section 2.1) are based on the performance of the service you request.</li>
+      <li>Crash reports and remote settings (section 2.2) are based on LNA App's <strong>legitimate interest</strong> in fixing malfunctions and tuning the game.</li>
+      <li>Analytics (section 2.2) is based on your <strong>consent</strong> in the European Economic Area, the United Kingdom and Switzerland, and elsewhere on LNA App's legitimate interest in understanding how the app is used; you can object at any time (section 7).</li>
+      <li>Personalised ads (section 2.3) are based on your <strong>consent</strong>, collected through the tool mentioned in that section; you can refuse without losing access to the game (non-personalised ads may then be shown).</li>
+      <li>In-app purchases (section 2.4) are based on the performance of the contract concluded at the time of purchase.</li>
+      <li>Test feedback (section 2.6) is based on your <strong>voluntary action</strong>: nothing is sent until you tap “Send”.</li>
+    </ul>
+
+    <h2 id="c4">4. Recipients of the data</h2>
+    <p>The recipients of the data described above are: <strong>LNA App</strong> for test feedback (section 2.6), <strong>Google</strong> (for Firebase — Analytics, Crashlytics, Remote Config, Cloud Firestore for test feedback, as a processor; for AdMob advertising; for Google Play purchases) and <strong>Apple</strong> (App Store, for purchases on iOS), each strictly within the scope of the services described above. No data is sold or passed on to any other third party.</p>
+
+    <h2 id="c5">5. Transfers outside the European Union</h2>
+    <p>Google and Apple may process some data, in particular data related to Firebase and AdMob, outside the European Union (notably in the United States). These transfers rely on the safeguards provided by these companies (in particular the European Commission's standard contractual clauses). See their respective privacy policies for details: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a> for Google, <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">apple.com/legal/privacy</a> for Apple.</p>
+
+    <h2 id="c6">6. Retention periods</h2>
+    <ul>
+      <li>Game data (section 2.1) is kept on your device until you uninstall the app or clear its data.</li>
+      <li>Analytics data (section 2.2) is kept for at most 14 months, and crash reports for 90 days, according to the retention periods of Firebase Analytics and Crashlytics.</li>
+      <li>Test feedback (section 2.6) is automatically deleted after <strong>12 months</strong>.</li>
+      <li>Data processed by Google for AdMob or Google Play is kept for the periods defined by Google.</li>
+    </ul>
+
+    <h2 id="c7">7. Your rights</h2>
+    <p>Under the GDPR, you have the right to access, rectify, erase, restrict, object to and port the data concerning you. You can exercise these rights:</p>
+    <ul>
+      <li>for game data (section 2.1): by uninstalling the app or clearing its data from your phone's settings;</li>
+      <li>for analytics (section 2.2): by refusing it in the “Privacy options” on the home screen, or by writing to us (section 11);</li>
+      <li>for personalised ads (section 2.3): from the “Privacy options” on the home screen;</li>
+      <li>for test feedback (section 2.6): by writing to us (section 11), if possible with the date of the submission so we can find it;</li>
+      <li>for data processed by Google or Apple (AdMob, Play, App Store, analytics): directly with these companies, through their respective ad-data and account management tools.</li>
+    </ul>
+    <p>You may also set instructions on what happens to your data after your death (Article 85 of the French Data Protection Act). You can contact us at the address in section 11 with any question, and you have the right to lodge a complaint with the CNIL, the French data protection authority (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>), or with the authority of your country of residence.</p>
+
+    <h2 id="c8">8. Children</h2>
+    <p>Daily Brain Gym is not intended for children <strong>under 15</strong>, the age from which a minor can consent alone to the processing of their data in France. If you are under 15, use the app with your parents' agreement, and make the choices in the consent tool with them. We do not knowingly collect personal data from children beyond the technical processing described above, which applies to all users.</p>
+
+    <h2 id="c9">9. Security</h2>
+    <p>Your progress does not leave your device (section 2.1), so it carries no risk of a server-side leak. The technical data described in sections 2.2 and 2.3 is processed on Google's infrastructure and benefits from the security measures Google applies to these services; LNA App's access to this data is limited to statistics and technical reports. Test feedback (section 2.6) is stored on Cloud Firestore: the app can only send it, never read it back, and only LNA App has access to it.</p>
+
+    <h2 id="c10">10. Changes to this policy</h2>
+    <p>This privacy policy may be updated, in particular when new game modes or new data processing are added (for example the worldwide ranking described in section 2.5): it is always updated <strong>before</strong> the processing concerned goes live. The date of the last update appears at the top of this document.</p>
+
+    <h2 id="c11">11. Contact</h2>
+    <p>For any question about this privacy policy, or to exercise any of the rights mentioned in section 7: <a href="mailto:lna.app.game@gmail.com">lna.app.game@gmail.com</a> — phone +33 6 19 56 21 68 — LNA App, 12 montée du Château, 13650 Meyrargues, France.</p>
+
+    <footer class="contact">
+      LNA App — SIRET 790 346 076 00025 — <a href="mailto:lna.app.game@gmail.com">lna.app.game@gmail.com</a>
+      <button class="copybtn" data-copy="lna.app.game@gmail.com">Copy email</button>
+    </footer>
+  </article>
+
+  <!-- ─────────────── Terms of Use ─────────────── -->
+  <article id="doc-cgu" class="doc" role="tabpanel" aria-labelledby="tab-cgu">
+    <div class="masthead">
+      <span class="doctitle">Terms of Use — Daily Brain Gym</span>
+      <strong>LNA App</strong> — Damien Ellena, sole trader (EI)<br>
+      12 montée du Château, 13650 Meyrargues, France<br>
+      Phone: +33 6 19 56 21 68 — Contact: lna.app.game@gmail.com<br>
+      SIRET (French business ID): 790 346 076 00025<br>
+      EU VAT number: FR 19790346076<br>
+      Publication director: Damien Ellena
+      <span class="updated">Last updated: November 10, 2026. The <a href="../#cgu" hreflang="fr">French version</a> is the authoritative one.</span>
+    </div>
+
+    <details class="toc">
+      <summary>Contents (26 sections)</summary>
+      <ol>
+        <li><a href="#g1">Purpose and acceptance</a></li>
+        <li><a href="#g2">Definitions</a></li>
+        <li><a href="#g3">Publisher of the App</a></li>
+        <li><a href="#g4">Capacity to contract</a></li>
+        <li><a href="#g5">Description of the Service</a></li>
+        <li><a href="#g6">Access and availability</a></li>
+        <li><a href="#g7">Progress and saving</a></li>
+        <li><a href="#g8">A game, not a health tool</a></li>
+        <li><a href="#g9">Advertising</a></li>
+        <li><a href="#g10">In-app purchases and Stars</a></li>
+        <li><a href="#g11">Intellectual property</a></li>
+        <li><a href="#g12">Permitted use</a></li>
+        <li><a href="#g13">Sanctions</a></li>
+        <li><a href="#g14">Liability and warranties</a></li>
+        <li><a href="#g15">App Store terms</a></li>
+        <li><a href="#g16">Google Play terms</a></li>
+        <li><a href="#g17">Personal data</a></li>
+        <li><a href="#g18">Changes to the Terms</a></li>
+        <li><a href="#g19">Term, deletion, termination</a></li>
+        <li><a href="#g20">Severability</a></li>
+        <li><a href="#g21">No waiver</a></li>
+        <li><a href="#g22">Entire agreement</a></li>
+        <li><a href="#g23">Assignment</a></li>
+        <li><a href="#g24">Language of the contract</a></li>
+        <li><a href="#g25">Governing law and disputes</a></li>
+        <li><a href="#g26">Contact</a></li>
+      </ol>
+    </details>
+
+    <h2 id="g1">1. Purpose and acceptance</h2>
+    <p>These Terms of Use (the “<strong>Terms</strong>”) set out how LNA App makes the <strong>Daily Brain Gym</strong> mobile app (the “<strong>App</strong>”) available and the conditions under which anyone accessing it (the “<strong>User</strong>”) may use the service.</p>
+    <p>Downloading, installing or using the App in any way implies full and unreserved acceptance of these Terms. If the User does not accept all or part of these Terms, they are invited not to use the App and to uninstall it.</p>
+    <p>These Terms are supplemented by the <a href="#" data-goto="conf">Privacy Policy</a>, which forms an integral part of them and details the processing of personal data carried out in connection with the App.</p>
+
+    <h2 id="g2">2. Definitions</h2>
+    <ul>
+      <li><strong>App</strong>: the Daily Brain Gym mobile game (“Méninges du Jour” in French), in all its versions and on all distribution platforms (Google Play, App Store).</li>
+      <li><strong>Publisher</strong>, <strong>LNA App</strong>, <strong>“we”</strong>: the natural or legal person described in section 3, publisher of the App.</li>
+      <li><strong>User</strong>, <strong>Player</strong>, <strong>“you”</strong>: anyone using the App.</li>
+      <li><strong>Store(s)</strong>: the app distribution platforms through which the App is offered for download (Google Play Store, Apple App Store).</li>
+      <li><strong>Stars</strong>: the game's virtual currency, earned by playing; it has no monetary value and cannot be exchanged, refunded or converted into money.</li>
+      <li><strong>Digital content</strong>: within the meaning of consumer law, any digital item supplied by the App, including Stars, hints, catch-up coffees and any feature unlocked by an In-App Purchase.</li>
+      <li><strong>In-App Purchase</strong>: any purchase made from the App through the billing system of the relevant Store.</li>
+      <li><strong>Progress</strong>: all the game data specific to a User (challenges completed, day streak, catch-up coffees, Stars, weekly goals, brain shape, records, grid gallery, settings).</li>
+    </ul>
+
+    <h2 id="g3">3. Publisher of the App</h2>
+    <p><strong>LNA App</strong>, trade name of Damien Ellena, sole trader (EI)<br>
+    12 montée du Château, 13650 Meyrargues, France<br>
+    Phone: +33 6 19 56 21 68<br>
+    SIRET: 790 346 076 00025<br>
+    EU VAT number: FR 19790346076<br>
+    Publication director: Damien Ellena<br>
+    Contact: <a href="mailto:lna.app.game@gmail.com">lna.app.game@gmail.com</a></p>
+    <p><strong>Hosting.</strong> The online services used by the App (analytics, crash reports, remote settings, test feedback) are provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland (phone +353 1 543 1000), through the Firebase service. This website is hosted by GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, United States (phone +1 877 448 4820).</p>
+
+    <h2 id="g4">4. Capacity to contract</h2>
+    <p>The App is intended for teenagers and adults. It contains no content reserved for a mature audience, but it is <strong>not intended for children under 15</strong>. A minor User declares that they use the App with the agreement of the person with parental authority. The age rating shown on the App's store page is the one set by the Stores.</p>
+    <p>In-App Purchases require the User (or, for a minor, their legal representative holding the payment method linked to the Store account) to have the legal capacity to contract, or to be duly authorised by the person with parental authority to make such purchases. The Publisher has no means of checking the User's age or their authorisation to make a purchase: this responsibility lies with the holder of the Google Play account or Apple ID used and is governed by the parental control tools offered by each Store.</p>
+
+    <h2 id="g5">5. Description of the Service</h2>
+    <p>Daily Brain Gym is a daily logic, memory and arithmetic game: each day, a short challenge (a few minutes) works on a different skill. The App is available in French and English.</p>
+    <p>The App offers in particular:</p>
+    <ul>
+      <li><strong>Daily challenge</strong>: each day of the week, a different format (logic sequence, hidden pairs, everyday arithmetic, mystery grid, gentle speed, surprise…), the same for all players on the same date, with a streak of consecutive days that “catch-up coffees” can protect from a missed day.</li>
+      <li><strong>Free play</strong>: mystery grids to collect in a gallery and 60-second blitz rounds, with a personal record.</li>
+      <li><strong>Brain shape</strong>: a pentagon showing the User's level in five skills, based on their latest games, and weekly goals.</li>
+    </ul>
+    <p>The App offers hints and other benefits obtained with the Stars earned by playing or by watching optional ads, as well as, where applicable, the optional In-App Purchases described in section 10.</p>
+    <p>This description is given for information; the Publisher reserves the right to change, add or remove features under the conditions of section 18.</p>
+
+    <h2 id="g6">6. Access and availability</h2>
+    <p>The App is available for free download on compatible Stores. It does not require an account and can be used without an Internet connection for most of its features, except for displaying ads, processing In-App Purchases and updating remote settings.</p>
+    <p>The Publisher strives to provide continuous access to the App but does not guarantee permanent availability, in particular in the event of maintenance, breakdown or unavailability of the third-party services the App depends on (Google Play Services, Firebase, ad networks).</p>
+
+    <h2 id="g7">7. Progress and saving</h2>
+    <p>The User's Progress is stored <strong>only on their device</strong>. It is not sent to or viewed by the Publisher, nor synchronised between devices: the App does not offer online backup. It is irretrievably lost if the App is uninstalled, if its data is cleared from the device settings or if the device is changed.</p>
+    <p>The daily challenge and weekly goals depend on the date of the User's device. The Publisher cannot be held liable for the loss of Progress, whatever the cause (uninstallation, change of device, breakdown, version incompatibility, change of the device's date, etc.).</p>
+
+    <h2 id="g8">8. A game, not a health tool</h2>
+    <p>Daily Brain Gym is an <strong>entertainment game</strong>. It is not a medical device, an IQ test or a diagnostic or medical monitoring tool, and does not claim to improve health or to prevent or treat any illness. The “brain shape” and the progress indications only reflect the User's results in the App's games. For any question about their health, the User should consult a health professional.</p>
+    <p>The App does not currently offer an online ranking: if such a ranking is added, these Terms and the Privacy Policy will be updated before it goes live.</p>
+
+    <h2 id="g9">9. Advertising</h2>
+    <p>The App shows ads provided by the <strong>Google AdMob</strong> network: mainly optional videos giving access to a benefit (hint, second attempt at the daily challenge, doubled Stars), which the User freely chooses to watch, and, where applicable, ads that may appear between two free-play games (never during a game or during the daily challenge).</p>
+    <p>A consent tool (Google User Messaging Platform, compliant with the IAB Europe Transparency and Consent Framework) is shown to the User before any ad request, in accordance with the GDPR. The User can review their choice at any time from the App's home screen (“Privacy options”).</p>
+    <p>The Publisher does not select or control the specific content of the ads served by this third-party network and cannot be held liable for the content of the ads displayed, provided the Publisher complies with the advertising content rules imposed by the Stores.</p>
+
+    <h2 id="g10">10. In-app purchases and Stars</h2>
+    <p><strong>10.1 Description.</strong> The App may offer optional In-App Purchases. The exact list and prices, including all taxes and in the currency shown by the Store, are those shown in the App at the time of purchase and may change. No subscription is offered at this time; should the Publisher offer a subscription, these Terms would be updated accordingly to specify its renewal and cancellation terms. Stars are earned by playing; they are only used within the App and have no monetary value.</p>
+    <p><strong>10.2 Seller and payment processing.</strong> In-App Purchases are sold and collected by the operator of the Store used, acting in its own name on behalf of the Publisher: Apple Distribution International Ltd (App Store, as commissionaire) or Google Commerce Ltd (Google Play, as merchant of record), under the terms of sale, payment methods and refund policies specific to each of these Stores. The Publisher supplies the unlocked Digital content and is answerable for it under section 10.6. The Publisher never collects, sees or keeps the User's payment information (card number, etc.); only the technical confirmation that a purchase was made is sent to the App in order to unlock the corresponding content.</p>
+    <p><strong>10.3 Scope of purchases.</strong> Non-consumable purchases can be recovered on any device using the same Google Play account or Apple ID, with the App's “Restore purchases” feature. Any consumable content (Stars, for example) is credited once and for all to the Progress at the time of purchase and cannot be credited again by the Store if the Progress is lost (section 7).</p>
+    <p><strong>10.4 Right of withdrawal.</strong> In-App Purchases are digital content supplied without a tangible medium and unlocked immediately. When the purchase is confirmed, the Store obtains the User's express consent to immediate performance and their acknowledgement that they lose their right of withdrawal, then sends them confirmation of that consent (purchase receipt), under Articles L.221-13 and L.221-28, 13° of the French Consumer Code. The 14-day right of withdrawal therefore does not apply to these purchases; refund requests are governed by the Store's policies (section 10.5).</p>
+    <p><strong>10.5 Complaints.</strong> Any complaint about the payment itself (incorrect charge, refund) must first be addressed to the customer service of the Store used, which alone is able to act on the transaction. For any question about the content unlocked by a purchase, the User may contact the Publisher using the details in section 26.</p>
+    <p><strong>10.6 Legal guarantee of conformity.</strong> The digital content supplied by the App, including content unlocked by an In-App Purchase, is covered by the legal guarantee of conformity provided for in Articles L.224-25-12 et seq. of the French Consumer Code. The Publisher is liable for any lack of conformity existing at the time of supply and appearing within two years of it, as well as for any lack of conformity resulting from a failure to supply the updates needed to keep the content in conformity during the period the User can reasonably expect. In the event of a defect (for example purchased content that is not unlocked), the User contacts the Publisher (section 26), who brings the content into conformity free of charge and within a reasonable time; failing that, the User may obtain a price reduction or termination of the contract under the conditions provided by law. This guarantee applies without prejudice to the Stores' refund policies.</p>
+
+    <h2 id="g11">11. Intellectual property</h2>
+    <p>The App, its source code, interface, graphics, grids, games, texts, visual identity and game mechanics are the exclusive property of LNA App or its licensors (including fonts distributed under the SIL Open Font License), and are protected by intellectual property law. Any unauthorised reproduction, representation, modification, adaptation or exploitation of all or part of the App is strictly prohibited.</p>
+
+    <h2 id="g12">12. Permitted use and prohibited conduct</h2>
+    <p>The User undertakes to use the App in accordance with its purpose, for strictly personal and non-commercial purposes, and in particular not to:</p>
+    <ul>
+      <li>attempt to circumvent, disable or disrupt the App's operating mechanisms (cheating, exploiting technical flaws, reverse engineering, use of bots or automated scripts);</li>
+      <li>obtain an In-App Purchase, Stars or a reward by fraudulent means;</li>
+      <li>attempt to gain unauthorised access to the Publisher's systems, data or servers;</li>
+      <li>use the App for illegal purposes or purposes contrary to public order.</li>
+    </ul>
+
+    <h2 id="g13">13. Sanctions in case of breach</h2>
+    <p>In the event of a proven breach of sections 4 or 12, the Publisher reserves the right, without notice or compensation, to suspend or revoke the User's access to the App's online features, in particular by invalidating a result or content obtained fraudulently, without prejudice to any legal action the Publisher may deem appropriate.</p>
+
+    <h2 id="g14">14. Liability and warranties</h2>
+    <p>Subject to the legal guarantee of conformity (section 10.6) and to the rights the User holds under the mandatory provisions of the French Consumer Code, the App is provided “as available”, without any guarantee that it is free of errors, bugs or interruptions. The Publisher uses reasonable means to ensure the App works properly but cannot guarantee compatibility with every existing hardware and software configuration.</p>
+    <p>To the extent permitted by applicable law, the Publisher cannot be held liable for indirect damage (loss of data, time or Stars, moral or commercial harm) resulting from the use of, or inability to use, the App, including in the event of loss of Progress. Nothing in these Terms is intended to exclude or limit the Publisher's liability where applicable law does not allow it (in particular in the event of gross negligence or wilful misconduct).</p>
+
+    <h2 id="g15">15. App Store (Apple) specific terms</h2>
+    <p>When the App is downloaded from Apple's App Store, the following provisions apply in addition to these Terms, in accordance with Apple Inc.'s requirements:</p>
+    <ul>
+      <li>These Terms are concluded between the User and the Publisher only, and not with Apple Inc.; Apple is not a party to these Terms and has no obligation to provide any maintenance or support for the App.</li>
+      <li>In the event the App fails to conform to any applicable warranty, the User may notify Apple, which may then refund the purchase price of the App, if any; to the maximum extent permitted by applicable law, Apple will have no other warranty obligation whatsoever with respect to the App.</li>
+      <li>Apple is not responsible for addressing any claims by the User or any third party relating to the App or the User's possession and/or use of it, including intellectual property claims.</li>
+      <li>The User represents that they are not located in a country subject to a U.S. Government embargo or designated by the U.S. Government as a “terrorist supporting” country, and that they are not listed on any U.S. Government list of prohibited or restricted parties.</li>
+      <li>Apple and its subsidiaries are third-party beneficiaries of these Terms and, as such, are entitled to enforce these Terms against the User as third-party beneficiaries.</li>
+    </ul>
+
+    <h2 id="g16">16. Google Play specific terms</h2>
+    <p>When the App is downloaded from the Google Play Store, its use is also subject to the <a href="https://play.google.com/intl/en/about/play-terms/" target="_blank" rel="noopener">Google Play Terms of Service</a> and related policies. In the event of a conflict between these Terms and the conditions imposed by Google on the matters they specifically govern (in particular billing of In-App Purchases), Google's conditions prevail on those matters.</p>
+
+    <h2 id="g17">17. Personal data</h2>
+    <p>How personal data is collected and processed when using the App is described in detail in the <a href="#" data-goto="conf">Privacy Policy</a>, which forms an integral part of these Terms.</p>
+
+    <h2 id="g18">18. Changes to the Terms</h2>
+    <p>The Publisher reserves the right to change these Terms at any time, in particular when new features are added, when applicable regulations change, or when the third-party services used change. Any substantial change will be announced in the App or on its store page, and will take effect upon publication of a new version of the App including these changes or on the date indicated. Continued use of the App after the changes take effect constitutes acceptance of the amended Terms; a User who does not accept them stops using the App (section 19).</p>
+
+    <h2 id="g19">19. Term, deletion and termination</h2>
+    <p>These Terms apply for as long as the User uses the App. The User may stop using the App at any time by uninstalling it from their device, which deletes their Progress, no copy of which is kept by the Publisher.</p>
+    <p>The Publisher reserves the right to stop operating the App or some of its features, in particular if it becomes economically or technically impossible to maintain them, subject to reasonable notice where circumstances allow.</p>
+
+    <h2 id="g20">20. Severability</h2>
+    <p>If any provision of these Terms is held to be null or unenforceable under a law, a regulation or a final court decision, it shall be deemed unwritten, without affecting the validity of the other provisions, which shall remain in full force.</p>
+
+    <h2 id="g21">21. No waiver</h2>
+    <p>The Publisher's failure at any time to enforce a breach by the User of any of the obligations set out in these Terms shall not be interpreted as a waiver of its right to enforce that breach in the future.</p>
+
+    <h2 id="g22">22. Entire agreement</h2>
+    <p>These Terms, supplemented by the Privacy Policy, set out the entire rights and obligations of the parties relating to the use of the App. They replace and supersede any prior agreement, written or oral, on the same subject.</p>
+
+    <h2 id="g23">23. Assignment</h2>
+    <p>The Publisher may assign or transfer these Terms, in whole or in part, to any company that takes over the operation of the App, without the User's prior consent, subject to respecting the rights the User holds under these Terms. The User may not assign these Terms without the Publisher's prior written consent.</p>
+
+    <h2 id="g24">24. Language of the contract</h2>
+    <p>These Terms are written in French. This English version is made available for information to Users who use the App in English; in the event of any discrepancy between the two versions, only the <a href="../#cgu" hreflang="fr">French version</a> is authoritative.</p>
+
+    <h2 id="g25">25. Governing law and dispute resolution</h2>
+    <p>These Terms are governed by French law, without prejudice to the mandatory consumer protection provisions the User may benefit from under the law of their country of residence within the European Union.</p>
+    <p>In the event of a dispute, the User is invited to contact the Publisher first using the details in section 26 in order to seek an amicable solution. Failing an amicable resolution, and in accordance with Articles L.616-1 and R.616-1 of the French Consumer Code, any consumer has the right to use, free of charge, the services of a consumer mediator for the amicable resolution of the dispute: the CM2C (Centre de la Médiation de la Consommation de Conciliateurs de Justice), 49 rue de Ponthieu, 75008 Paris, France, phone +33 1 89 47 00 14. The consumer may refer the matter online at <a href="https://www.cm2c.net/declarer-un-litige.php">www.cm2c.net/declarer-un-litige.php</a>, by email to <a href="mailto:litiges@cm2c.net">litiges@cm2c.net</a> or by post to the address above. Failing an amicable agreement or recourse to mediation, the competent French courts shall have sole jurisdiction, subject to the mandatory jurisdiction rules applicable to consumers.</p>
+
+    <h2 id="g26">26. Contact</h2>
+    <p>For any question about these Terms: <a href="mailto:lna.app.game@gmail.com">lna.app.game@gmail.com</a> — phone +33 6 19 56 21 68 — LNA App, 12 montée du Château, 13650 Meyrargues, France.</p>
+
+    <footer class="contact">
+      LNA App — SIRET 790 346 076 00025 — <a href="mailto:lna.app.game@gmail.com">lna.app.game@gmail.com</a>
+      <button class="copybtn" data-copy="lna.app.game@gmail.com">Copy email</button>
+    </footer>
+  </article>
+</div>
+
+<script>
+  const tabs = {
+    conf: { btn: document.getElementById('tab-conf'), panel: document.getElementById('doc-conf') },
+    cgu: { btn: document.getElementById('tab-cgu'), panel: document.getElementById('doc-cgu') },
+  };
+  // Accept #privacy / #terms as aliases too.
+  const aliases = { privacy: 'conf', terms: 'cgu' };
+  function activate(name, push) {
+    for (const key in tabs) {
+      const isActive = key === name;
+      tabs[key].btn.setAttribute('aria-selected', String(isActive));
+      tabs[key].panel.classList.toggle('active', isActive);
+    }
+    if (push) history.replaceState(null, '', '#' + name);
+  }
+  tabs.conf.btn.addEventListener('click', () => activate('conf', true));
+  tabs.cgu.btn.addEventListener('click', () => activate('cgu', true));
+  document.querySelectorAll('[data-goto]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      activate(el.getAttribute('data-goto'), true);
+    });
+  });
+
+  function fromHash() {
+    let h = location.hash.replace('#', '');
+    h = aliases[h] || h;
+    if (h === 'cgu' || h === 'conf') { activate(h, false); return; }
+    // Section anchor (#g9, #c7…): open the tab that contains it.
+    const target = h && document.getElementById(h);
+    if (target) {
+      activate(target.closest('#doc-cgu') ? 'cgu' : 'conf', false);
+      target.scrollIntoView();
+    }
+  }
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
+
+  document.querySelectorAll('.copybtn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.getAttribute('data-copy');
+      const original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copied';
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(btn);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = 'Selected';
+      }
+      setTimeout(() => { btn.textContent = original; }, 1600);
+    });
+  });
+</script>
+
+</body>
+</html>
