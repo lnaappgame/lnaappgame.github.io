@@ -213,10 +213,12 @@
 
     <h3>2.1 Game data, on your device only</h3>
     <p>My Secret Garden does not ask for an account, a name, an email address or a nickname to play. Your progress (garden and planted flowers, restored areas, gardener level, petals and dew, daily bouquets, Workshop and inventory, helpers, sound setting) is saved <strong>only on your device</strong> and is not sent to any server. If you uninstall the app or clear its data from your phone settings, this data is deleted.</p>
+    <p><strong>Seed reminder.</strong> If you accept it (you are asked once, when you plant your grandfather's first seed, and there is a switch in the game settings), the game schedules a notification on your phone, around 8 am, when a seed has bloomed. Everything happens on your device: no data is sent for it. You can turn it off at any time, in the game or phone settings.</p>
 
     <h3>2.2 Analytics, technical diagnostics and remote settings (Firebase Analytics, Crashlytics and Remote Config)</h3>
     <p>The app uses <strong>Firebase Analytics</strong> to measure general usage of the game (for example: a flower planted, a gardener level reached, an area restored, an item crafted, a video watched, a purchase with its product, price and currency), <strong>Firebase Crashlytics</strong> to receive an automatic technical report when the app crashes (type of error, technical state of the app at the time of the incident) and <strong>Firebase Remote Config</strong> to receive the game's settings (for example how fast flowers grow or video rewards) without publishing a new version. These tools, provided by Google, use technical data about your device (model, operating system version, installation identifier) but are not intended to identify you personally.</p>
     <p>If you are in the European Economic Area, the United Kingdom or Switzerland, analytics is switched off when the app starts and is only enabled if you accept, in the consent tool described in section 2.3, the purposes “store and/or access information on a device” and “measure content performance”. Crash reports and remote settings, which the game needs to work properly, do not depend on this choice.</p>
+    <p><strong>App verification (Firebase App Check).</strong> To protect our online services against modified copies of the game, the app asks Google Play (Play Integrity) or, on iPhone, Apple (DeviceCheck) to confirm that it really is the app talking to Firebase. This check uses technical data about your device and the app; it is not used to identify you and does not depend on your choice about audience measurement.</p>
 
     <h3>2.3 Advertising (Google AdMob)</h3>
     <p>The app shows ads provided by <strong>Google AdMob</strong> in two ways:</p>
@@ -236,7 +238,10 @@
     <p>During the closed test on Google Play, the test version of My Secret Garden offers a “Testers” entry where you can give us your opinion or report a bug. <strong>Nothing is sent until you tap “Send”.</strong> A submission contains: your answers and texts; the first name or nickname you choose to give (optional); the app language; its version; the system version and your phone model (for example “OnePlus LE2113”); the number of days and sessions since installation; your progress in the game (for example “level 5, 7 varieties”); a randomly generated installation identifier, which links your submissions together without identifying you. This feedback is used only to improve the game. It is hosted by Google (Firebase Cloud Firestore) in the European Union, and only LNA App reads it. Please avoid writing personal information (address, phone number) in it. The public version of My Secret Garden does not contain this entry.</p>
     <p><strong>“Thanks to our testers” screen.</strong> In the “Testers” entry, an optional box, unchecked by default, lets you ask for your first name or nickname to appear in the game’s “Thanks to our testers” screen, which is also in the public version. If you check it, your submission records that choice and we add your nickname to the displayed list, which the app receives through Firebase Remote Config. Only that nickname is shown, never any other information. You can ask us to remove it at any time (section 11).</p>
 
-    <h3>2.6 What we do not do</h3>
+    <h3>2.6 Other games from the studio</h3>
+    <p>At most once a day, the app downloads from our website (lnaappgame.github.io, hosted by GitHub) the list of LNA App's other games, shown in the settings ("Our other games"). As with any web page, GitHub receives your device's IP address; nothing else is sent. If you tap one of these games, its Google Play or App Store page opens with a link that only says it comes from My Secret Garden.</p>
+
+    <h3>2.7 What we do not do</h3>
     <p>LNA App does not sell any data to third parties and does not use any analytics or ad-targeting tool other than those listed above (Google AdMob, Firebase). My Secret Garden currently offers no online leaderboard and no exchange between players: your progress is not sent to any server. The app has no access to your contacts, photos, precise location or any other data on your device not mentioned in this policy.</p>
 
     <h2 id="c3">3. Legal basis and purposes</h2>
@@ -247,10 +252,12 @@
       <li>Personalized ads (section 2.3) are based on your <strong>consent</strong>, collected through the tool mentioned in that section; you can refuse it without losing access to the game (non-personalized ads may then be shown).</li>
       <li>In-app purchases (section 2.4) are based on the performance of the contract concluded at the time of purchase.</li>
       <li>Test feedback (section 2.5) is based on your <strong>consent</strong>, expressed by your voluntary action: nothing is sent unless you choose to send it.</li>
+      <li>App verification (section 2.2) and the list of other games (section 2.6) are based on LNA App's legitimate interest in protecting its services and presenting its games.</li>
+      <li>The seed reminder (section 2.1) is based on your <strong>consent</strong>, given when you accept it; you can withdraw it at any time.</li>
     </ul>
 
     <h2 id="c4">4. Recipients of the data</h2>
-    <p>The recipients of the data described above are: <strong>Google</strong> (for Firebase — Analytics, Crashlytics, Remote Config; AdMob for advertising; Google Play for purchases) and <strong>Apple</strong> (App Store, for purchases on iOS), each strictly within the scope of the services described above. Test feedback (section 2.5) is read only by LNA App; Google hosts it as a processor (Firebase). No data is sold or passed on to any other third party.</p>
+    <p>The recipients of the data described above are: <strong>Google</strong> (for Firebase — Analytics, Crashlytics, Remote Config, App Check; AdMob for advertising; Google Play for purchases), <strong>Apple</strong> (App Store, for purchases, and DeviceCheck on iOS) and <strong>GitHub</strong> (hosting of our website and of the list of other games, section 2.6), each strictly within the scope of the services described above. Test feedback (section 2.5) is read only by LNA App; Google hosts it as a processor (Firebase). No data is sold or passed on to any other third party.</p>
 
     <h2 id="c5">5. Transfers outside the European Union</h2>
     <p>Google and Apple may process some data, in particular data related to Firebase and AdMob, outside the European Union (in particular in the United States). These transfers rely on the safeguards provided by these companies (including the European Commission's standard contractual clauses). See their respective privacy policies for more details: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a> for Google, <a href="https://www.apple.com/legal/privacy/en-ww/" target="_blank" rel="noopener">apple.com/legal/privacy</a> for Apple.</p>
@@ -281,7 +288,7 @@
     <p>Your progress never leaves your device (section 2.1), so it carries no risk of a server-side leak. The technical data described in sections 2.2 and 2.3 is processed on Google's infrastructure and benefits from the security measures Google applies to these services; LNA App's access to this data is limited to statistics and technical reports. Test feedback (section 2.5) is stored on Cloud Firestore: the app can only send it, never read it back, and only LNA App has access to it.</p>
 
     <h2 id="c10">10. Changes to this policy</h2>
-    <p>This privacy policy may be updated, in particular when new game modes or new data processing are added (for example village orders, an exchange between players or in-app purchases): it is always updated <strong>before</strong> the processing concerned goes live. The date of the last update is shown at the top of this document.</p>
+    <p>This privacy policy may be updated, in particular when new game modes or new data processing are added (for example a leaderboard or an exchange between players): it is always updated <strong>before</strong> the processing concerned goes live. The date of the last update is shown at the top of this document.</p>
 
     <h2 id="c11">11. Contact</h2>
     <p>For any question about this privacy policy, or to exercise any of the rights mentioned in section 7: <a href="mailto:lna.app.game@gmail.com">lna.app.game@gmail.com</a> — phone +33 6 19 56 21 68 — LNA App, 12 montée du Château, 13650 Meyrargues, France.</p>
