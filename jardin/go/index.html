@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mon Jardin Secret</title>
+<meta name="description" content="Fais renaître le jardin d'un vieux manoir : plante, récolte et fabrique.">
+<meta property="og:title" content="Mon Jardin Secret">
+<meta property="og:description" content="Fais renaître le jardin d'un vieux manoir : plante, récolte et fabrique.">
+<meta property="og:image" content="https://lnaappgame.github.io/promo/jardin.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Libre+Franklin:wght@400;600;700&display=swap">
+<style>
+  :root { --bg: #F4EFE3; --panel: #FFFFFF; --fg: #2E3A2B; --muted: #6F7A68; --green: #4F7A4A; --green-hi: #3B6236; --rose: #B9566E; color-scheme: light; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { background: var(--bg); color: var(--fg); font-family: "Libre Franklin", Arial, sans-serif; display: grid; place-items: center; min-height: 100vh;
+    padding: max(24px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    background-image: radial-gradient(ellipse at 50% 120%, rgba(79,122,74,0.18), transparent 60%); }
+  main { width: min(440px, 100%); text-align: center; display: grid; gap: 18px; }
+  img.icone { width: 96px; height: 96px; border-radius: 22px; margin: 0 auto; display: block; box-shadow: 0 6px 18px rgba(46,58,43,0.18); }
+  h1 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 700; font-size: clamp(40px, 11vw, 56px); color: var(--green-hi); margin: 0; line-height: 1; }
+  .tag { font-size: 18px; line-height: 1.45; margin: 0; }
+  .tag b { color: var(--rose); }
+  .stores { display: grid; gap: 10px; }
+  .store { display: block; border: 1px solid rgba(79,122,74,0.45); border-radius: 14px; padding: 14px 16px; text-decoration: none; color: var(--fg); background: var(--panel); }
+  .store strong { display: block; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 700; font-size: 26px; color: var(--green-hi); }
+  .store span { font-size: 14px; color: var(--muted); }
+  a.store:hover, a.store:focus-visible { border-color: var(--green-hi); outline: none; }
+  .soon { opacity: 0.75; }
+  footer { font-size: 12px; color: var(--muted); }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <img class="icone" src="../../promo/jardin.png" alt="" width="96" height="96">
+  <h1>Mon Jardin Secret</h1>
+  <p class="tag" id="tag">Fais renaître le jardin d'un vieux manoir : <b>plante, récolte et fabrique</b>.</p>
+  <div class="stores" id="stores"></div>
+  <footer><a href="../" id="legal">Mentions légales et confidentialité</a> · LNA App</footer>
+</main>
+<script>
+  // À passer à true le jour où chaque version est en ligne : la page redirige alors directement vers le bon store.
+  var IOS_LIVE = false;
+  var ANDROID_LIVE = false;
+  var APP_STORE = "https://apps.apple.com/app/id6834737437";
+  var PLAY_STORE = "https://play.google.com/store/apps/details?id=com.lnaapp.secretgarden";
+
+  var params = new URLSearchParams(location.search);
+  var src = (params.get("s") || "direct").replace(/[^a-z0-9_-]/gi, "").slice(0, 20) || "direct";
+  // Google Play compte les installations par source (Play Console, Acquisition) : s=carte pour la carte postale partagée.
+  var play = PLAY_STORE + "&referrer=" + encodeURIComponent("utm_source=" + src + "&utm_medium=share&utm_campaign=jardin");
+  var ua = navigator.userAgent || "";
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  if (isIOS && IOS_LIVE) location.replace(APP_STORE);
+  else if (isAndroid && ANDROID_LIVE) location.replace(play);
+
+  var en = !/^fr/i.test(navigator.language || "fr");
+  var t = en ? {
+    tag: "Bring an old manor's garden back to life: <b>plant, harvest and craft</b>.",
+    ios: ["App Store", IOS_LIVE ? "Free on iPhone" : "Coming soon on iPhone"],
+    android: ["Google Play", ANDROID_LIVE ? "Free on Android" : "Coming soon on Android"],
+    legal: "Legal notice and privacy", legalHref: "../en/"
+  } : {
+    tag: "Fais renaître le jardin d'un vieux manoir : <b>plante, récolte et fabrique</b>.",
+    ios: ["App Store", IOS_LIVE ? "Gratuit sur iPhone" : "Bientôt sur iPhone"],
+    android: ["Google Play", ANDROID_LIVE ? "Gratuit sur Android" : "Bientôt sur Android"],
+    legal: "Mentions légales et confidentialité", legalHref: "../"
+  };
+  if (en) { document.documentElement.lang = "en"; document.title = "My Secret Garden"; document.getElementById("tag").innerHTML = t.tag; var l = document.getElementById("legal"); l.textContent = t.legal; l.href = t.legalHref; }
+  function store(label, sub, href) {
+    return href
+      ? '<a class="store" href="' + href + '"><strong>' + label + '</strong><span>' + sub + '</span></a>'
+      : '<div class="store soon"><strong>' + label + '</strong><span>' + sub + '</span></div>';
+  }
+  var list = [store(t.ios[0], t.ios[1], IOS_LIVE ? APP_STORE : ""), store(t.android[0], t.android[1], ANDROID_LIVE ? play : "")];
+  if (isAndroid) list.reverse();
+  document.getElementById("stores").innerHTML = list.join("");
+</script>
+</body>
+</html>
