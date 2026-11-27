@@ -1,4 +1,4 @@
-{"version":1,"updated":"2026-11-26","games":[
+{"version":1,"updated":"2026-11-27","games":[
  {"id":"jardin","name":{"fr":"Mon Jardin Secret","en":"My Secret Garden"},
   "pitch":{"fr":"Fais renaître le jardin d'un vieux manoir","en":"Bring an old manor's garden back to life"},
   "icon":"https://lnaappgame.github.io/promo/jardin.png",
@@ -14,7 +14,7 @@
  {"id":"meninges","name":{"fr":"Méninges du Jour","en":"Daily Brain"},
   "pitch":{"fr":"Un défi de logique par jour pour garder l'esprit vif","en":"One logic challenge a day to keep your mind sharp"},
   "icon":"https://lnaappgame.github.io/promo/meninges.png",
-  "android":"com.lnaapp.braingym","ios":"6833611375","weight":2,"live":{"android":false,"ios":false}},
+  "android":"com.lnaapp.braingym","ios":"6833611375","weight":2,"live":{"android":false,"ios":true}},
  {"id":"faisceau","name":{"fr":"Faisceau","en":"Guide the Light"},
   "pitch":{"fr":"Oriente les miroirs et allume chaque cristal","en":"Turn the mirrors and light every crystal"},
   "icon":"https://lnaappgame.github.io/promo/faisceau.png",
